@@ -13,26 +13,40 @@ namespace PProxy_gui.View
             mc = new MainController();
         }
 
-        public void UpdateConf()
+        private void UpdateServer()
         {
             var serverList = mc.LoadConfigList(Properties.Resources.s_prefix);
-            var processList = mc.LoadConfigList(Properties.Resources.p_prefix);
-
             cb_Server.Items.Clear();
-            cb_Process.Items.Clear();
-
             cb_Server.Items.AddRange(serverList.ToArray());
-            cb_Process.Items.AddRange(processList.ToArray());
-
             try
             {
                 cb_Server.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private void UpdateGame()
+        {
+            var processList = mc.LoadConfigList(Properties.Resources.p_prefix);
+            cb_Process.Items.Clear();
+            cb_Process.Items.AddRange(processList.ToArray());
+            try
+            {
                 cb_Process.SelectedIndex = 0;
             }
             catch (Exception)
             {
-
+                return;
             }
+        }
+
+        public void UpdateConf()
+        {
+            UpdateServer();
+            UpdateGame();
         }
         private void MainView_Load(object sender, EventArgs e)
         {
@@ -62,22 +76,39 @@ namespace PProxy_gui.View
             }
             mc.RunPProxy(cb_Server.Text, cb_Process.Text);
             SetEnable();
+            lb_status.Text = $"Server: {cb_Server.Text} Game: {cb_Process.Text}";
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
             mc.StopPProxy(new MainController.ExitEvent(SetEnable));
             //SetEnable();
+            lb_status.Text = "";
         }
 
         private void proxyServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AddServerView().ShowDialog();
+            var view = new AddServerView(mc);
+            view.ShowDialog();
+            if (view.ok)
+            {
+                UpdateServer();
+            }
         }
 
         private void gameConfigureToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AddGameView().ShowDialog();
+            var view = new AddGameView(mc);
+            view.ShowDialog();
+            if (view.ok)
+            {
+                UpdateGame();
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            UpdateConf();
         }
     }
 }

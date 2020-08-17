@@ -38,6 +38,8 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proxyServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameConfigureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lb_status = new System.Windows.Forms.Label();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,10 +106,11 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
+            this.addToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(417, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(417, 30);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -117,28 +120,46 @@
             this.proxyServerToolStripMenuItem,
             this.gameConfigureToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(54, 26);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // proxyServerToolStripMenuItem
             // 
             this.proxyServerToolStripMenuItem.Name = "proxyServerToolStripMenuItem";
-            this.proxyServerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.proxyServerToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.proxyServerToolStripMenuItem.Text = "ProxyServer";
             this.proxyServerToolStripMenuItem.Click += new System.EventHandler(this.proxyServerToolStripMenuItem_Click);
             // 
             // gameConfigureToolStripMenuItem
             // 
             this.gameConfigureToolStripMenuItem.Name = "gameConfigureToolStripMenuItem";
-            this.gameConfigureToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gameConfigureToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.gameConfigureToolStripMenuItem.Text = "GameConfigure";
             this.gameConfigureToolStripMenuItem.Click += new System.EventHandler(this.gameConfigureToolStripMenuItem_Click);
+            // 
+            // lb_status
+            // 
+            this.lb_status.AutoSize = true;
+            this.lb_status.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lb_status.ForeColor = System.Drawing.Color.Lime;
+            this.lb_status.Location = new System.Drawing.Point(0, 111);
+            this.lb_status.Name = "lb_status";
+            this.lb_status.Size = new System.Drawing.Size(0, 15);
+            this.lb_status.TabIndex = 7;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(74, 24);
+            this.toolStripMenuItem1.Text = "Reload";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 126);
+            this.Controls.Add(this.lb_status);
             this.Controls.Add(this.btn_stop);
             this.Controls.Add(this.btn_start);
             this.Controls.Add(this.cb_Process);
@@ -172,6 +193,8 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proxyServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameConfigureToolStripMenuItem;
+        private System.Windows.Forms.Label lb_status;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

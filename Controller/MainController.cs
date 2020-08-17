@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace PProxy_gui.Controller
 {
-    class MainController
+    public class MainController
     {
         Process p;
         public List<string> LoadConfigList(string path)
@@ -67,7 +66,6 @@ namespace PProxy_gui.Controller
                 GenerateConsoleCtrlEvent(CtrlTypes.CTRL_C_EVENT, 0);
                 FreeConsole();
                 SetConsoleCtrlHandler(null, false);
-                p.Kill();
                 while (!p.HasExited) ;
                 exitEvent();
             }
@@ -93,7 +91,7 @@ namespace PProxy_gui.Controller
         private static extern bool FreeConsole();
 
         [DllImport("kernel32.dll")]
-        private static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate? HandlerRoutine, bool Add);
+        private static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate HandlerRoutine, bool Add);
 
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
