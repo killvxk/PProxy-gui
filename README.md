@@ -1,2 +1,2 @@
 # PProxy-gui
-另一个项目PProxy的GUI
+鍙︿竴涓」鐩甈Proxy鐨凣UI
